@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -10,12 +11,12 @@ namespace MauiApp1.ViewModel
         IConnectivity connectivity;
         public MainViewModel(IConnectivity connectivity) 
         {
-            Items = new ObservableCollection<string>();
+            Items = new ObservableCollection<TaskItem>();
             this.connectivity = connectivity;
         }
         
         [ObservableProperty]
-        ObservableCollection<string> items;
+        ObservableCollection<TaskItem> items;
 
 
         [ObservableProperty]
@@ -33,14 +34,15 @@ namespace MauiApp1.ViewModel
                 return;
             }
 
-            Items.Add(Text);
+            Items.Add(new TaskItem(Text));
             Text = string.Empty;
         }
 
         [RelayCommand]
         void Delete(string s)
         {
-            if(Items.Contains(s)) Items.Remove(s);
+            
+            //if (Items.Contains(s)) Items.Remove(s);
         }
 
         [RelayCommand]
