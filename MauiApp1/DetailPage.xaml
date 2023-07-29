@@ -5,11 +5,25 @@
              xmlns:viewmodel="clr-namespace:MauiApp1.ViewModel"
              x:DataType="viewmodel:DetailViewModel"
              Title="DetailPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Text}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Editor Grid.Row="0"
+                Text="{Binding Text}"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"              
+                HeightRequest="500"/>
+
+        <Button Text="save"
+                VerticalOptions="Start"
+                HeightRequest="50"
+                Margin="10"
+                Grid.Row="1"/>
+
+
+    </Grid>
 </ContentPage>

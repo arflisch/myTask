@@ -45,6 +45,7 @@
                                         CommandParameter="{Binding Name}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="{Binding Name}"
+                                       TextColor="Black"
                                        FontSize="24"/>
                             </Frame>
                         </Grid>
