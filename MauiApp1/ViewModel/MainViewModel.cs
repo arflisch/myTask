@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Model;
+using MongoDB.Bson;
+using Realms;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -13,6 +15,7 @@ namespace MauiApp1.ViewModel
         {
             Items = new ObservableCollection<TaskItem>();
             this.connectivity = connectivity;
+            LoadTasksCommand = new AsyncRelayCommand(LoadTasksAsync);
         }
         
         [ObservableProperty]
@@ -21,6 +24,7 @@ namespace MauiApp1.ViewModel
 
         [ObservableProperty]
         string text;
+        public IAsyncRelayCommand LoadTasksCommand { get; }
 
         [RelayCommand]
         async Task Add()
@@ -34,21 +38,42 @@ namespace MauiApp1.ViewModel
                 return;
             }
 
-            Items.Add(new TaskItem(Text));
+            var task = TaskItem.Create(Text);
+            var realm = await Realm.GetInstanceAsync();
+
+            await realm.WriteAsync(() =>
+            {
+                realm.Add(task);
+            });
+
+            Items.Add(task);
             Text = string.Empty;
         }
 
         [RelayCommand]
-        void Delete(string s)
+        async Task Delete(ObjectId id)
         {
-            
-            //if (Items.Contains(s)) Items.Remove(s);
+            var realm = await Realm.GetInstanceAsync();
+
+            var item = realm.Find<TaskItem>(id);
+            await realm.WriteAsync(() =>
+            {
+                realm.Remove(item);
+            });
+            await LoadTasksAsync();
         }
 
         [RelayCommand]
-        async Task Tap(string s)
+        async Task Tap(ObjectId id)
         {
-            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Id={id.ToString()}");
+        }
+
+        private async Task LoadTasksAsync()
+        {
+            var realm = await Realm.GetInstanceAsync();
+            var allItems = realm.All<TaskItem>();
+            Items = new ObservableCollection<TaskItem>(allItems);
         }
     }
 }

@@ -13,12 +13,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Editor Grid.Row="0"
-                Text="{Binding Text}"
+                Text="{Binding Item.Name}"
                 VerticalOptions="Start"
                 HorizontalOptions="Fill"              
                 HeightRequest="500"/>
 
-        <Button Text="save"
+        <Button Text="Save"
+                TextColor="Black"
                 VerticalOptions="Start"
                 HeightRequest="50"
                 Margin="10"

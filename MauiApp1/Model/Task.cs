@@ -1,15 +1,35 @@
 ﻿
 
+using MongoDB.Bson;
+
 namespace MauiApp1.Model
 {
-     public class TaskItem
+     public partial class TaskItem : IRealmObject
     {
-        public TaskItem(string name)
+        
+        private TaskItem(string name)
         {
             Name = name;
         }
 
+        public static TaskItem Create(string name)
+        {
+            return new TaskItem(name);
+        }
 
+        public static TaskItem CreateForDeletion(ObjectId id)
+        {
+            return new TaskItem(id);
+        }
+
+        private TaskItem(ObjectId id)
+        {
+            Id = id;
+        }
+
+        [PrimaryKey]
+        [MapTo("_id")]
+        public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
         public  string Name { get; private set; }
         public string Description { get; private set; }
     }
