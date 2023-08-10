@@ -66,7 +66,7 @@ namespace MauiApp1.ViewModel
         [RelayCommand]
         async Task Tap(ObjectId id)
         {
-            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Id={id.ToString()}");
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Id={id}");
         }
 
         private async Task LoadTasksAsync()

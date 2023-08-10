@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Model;
 using MongoDB.Bson;
+using System.Threading.Tasks;
 
 namespace MauiApp1.ViewModel
 {
@@ -31,6 +32,21 @@ namespace MauiApp1.ViewModel
                 Item = realm.Find<TaskItem>(id);
 
             }
+        }
+
+        [RelayCommand]
+        async Task Save()
+        {
+            var realm = await Realm.GetInstanceAsync();
+
+            var item = realm.Find<TaskItem>(Item.Id);
+
+            await realm.WriteAsync(() =>
+            {
+                item.Description = Item.Description;
+                item.Name = Item.Name;
+            });
+            
         }
 
         [RelayCommand]
