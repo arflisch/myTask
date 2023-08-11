@@ -48,11 +48,41 @@ namespace MauiApp1.ViewModel
             });
             
         }
+        
+        [RelayCommand]
+        private async Task Delete()
+        {
+            var realm = await Realm.GetInstanceAsync();
+            var item = realm.Find<TaskItem>(Item.Id);
+
+
+            await realm.WriteAsync(() =>
+            {
+                realm.Remove(item);
+            });
+            await GoBack();
+        }
+
+        async void OnButtonClicked(object sender, EventArgs args) 
+        {
+            bool answer = await DisplayAlert("Do you want to delete the task", "Yes", "No");
+            if (answer)
+            {
+                await Delete();
+            }
+        }
+
+        private Task<bool> DisplayAlert(string v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
+        }
 
         [RelayCommand]
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+            
         }
+        
     }
 }

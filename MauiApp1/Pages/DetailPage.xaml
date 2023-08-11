@@ -10,10 +10,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Editor Grid.Row="0"
                 Text="{Binding Item.Name}"
-                HorizontalOptions="Center"
+                HorizontalOptions="Start"
+                WidthRequest="1500"
                 FontSize="24"/>
         <Editor Grid.Row="1"
                 Placeholder="Your description"
@@ -29,6 +31,16 @@
                 Margin="10"
                 Grid.Row="2"
                 Command="{Binding SaveCommand}"/>
+
+        <Button Text="Delete"
+                TextColor="Black"
+                VerticalOptions="Start"
+                HeightRequest="50"
+                Margin="10"
+                Grid.Row="3"
+                />
+                <!-- Command="{Binding DeleteCommand}" -->
+                
 
 
     </Grid>

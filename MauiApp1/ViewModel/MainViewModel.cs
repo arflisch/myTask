@@ -75,5 +75,7 @@ namespace MauiApp1.ViewModel
             var allItems = realm.All<TaskItem>();
             Items = new ObservableCollection<TaskItem>(allItems);
         }
+
+       
     }
 }
