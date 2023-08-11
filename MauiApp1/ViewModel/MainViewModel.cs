@@ -69,7 +69,7 @@ namespace MauiApp1.ViewModel
             await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Id={id}");
         }
 
-        private async Task LoadTasksAsync()
+        public async Task LoadTasksAsync()
         {
             var realm = await Realm.GetInstanceAsync();
             var allItems = realm.All<TaskItem>();

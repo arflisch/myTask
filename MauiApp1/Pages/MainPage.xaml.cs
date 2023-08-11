@@ -9,8 +9,17 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-		vm.LoadTasksCommand.Execute(null);
+        _vm = vm;
 	}
+
+    private readonly MainViewModel _vm;
+
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
+        await _vm.LoadTasksAsync().ConfigureAwait(true);
+    }
 
 }
 

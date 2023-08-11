@@ -38,9 +38,9 @@
                 HeightRequest="50"
                 Margin="10"
                 Grid.Row="3"
-                />
-                <!-- Command="{Binding DeleteCommand}" -->
-                
+                Command="{Binding DeleteCommand}" />
+
+
 
 
     </Grid>

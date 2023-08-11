@@ -60,16 +60,8 @@ namespace MauiApp1.ViewModel
             {
                 realm.Remove(item);
             });
+            
             await GoBack();
-        }
-
-        async void OnButtonClicked(object sender, EventArgs args) 
-        {
-            bool answer = await DisplayAlert("Do you want to delete the task", "Yes", "No");
-            if (answer)
-            {
-                await Delete();
-            }
         }
 
         private Task<bool> DisplayAlert(string v1, string v2, string v3)
