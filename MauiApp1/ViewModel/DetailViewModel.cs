@@ -50,7 +50,7 @@ namespace MauiApp1.ViewModel
         }
         
         [RelayCommand]
-        private async Task Delete()
+        public async Task Delete()
         {
             var realm = await Realm.GetInstanceAsync();
             var item = realm.Find<TaskItem>(Item.Id);

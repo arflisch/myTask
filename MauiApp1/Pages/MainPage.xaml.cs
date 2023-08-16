@@ -21,5 +21,6 @@ public partial class MainPage : ContentPage
         await _vm.LoadTasksAsync().ConfigureAwait(true);
     }
 
+    
 }
 

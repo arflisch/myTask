@@ -4,7 +4,8 @@
              x:Class="MauiApp1.DetailPage"
              xmlns:viewmodel="clr-namespace:MauiApp1.ViewModel"
              x:DataType="viewmodel:DetailViewModel"
-             Title="DetailPage">
+             Title="{x:Static res:Language.DescTitle}"
+             xmlns:res="clr-namespace:MauiApp1.Resources">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,13 +19,13 @@
                 WidthRequest="1500"
                 FontSize="24"/>
         <Editor Grid.Row="1"
-                Placeholder="Your description"
+                Placeholder="{x:Static res:Language.PlaceHolderDesc}"
                 Text="{Binding Item.Description}"
                 VerticalOptions="Start"
                 HorizontalOptions="Fill"              
                 HeightRequest="500"/>
 
-        <Button Text="Save"
+        <Button Text="{x:Static res:Language.SaveButton}"
                 TextColor="Black"
                 VerticalOptions="Start"
                 HeightRequest="50"
@@ -32,15 +33,13 @@
                 Grid.Row="2"
                 Command="{Binding SaveCommand}"/>
 
-        <Button Text="Delete"
+        <Button Text="{x:Static res:Language.DeleteButton}"
                 TextColor="Black"
                 VerticalOptions="Start"
                 HeightRequest="50"
                 Margin="10"
                 Grid.Row="3"
-                Command="{Binding DeleteCommand}" />
-
-
+                Clicked="OnButtonClicked" />
 
 
     </Grid>

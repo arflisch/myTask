@@ -1,4 +1,5 @@
 using MauiApp1.ViewModel;
+using MauiApp1.Resources;
 
 namespace MauiApp1;
 
@@ -8,5 +9,16 @@ public partial class DetailPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-	}
+        _vm = vm;
+    }
+    private readonly DetailViewModel _vm;
+    protected async void OnButtonClicked(object sender, EventArgs args)
+    {
+        bool answer = await DisplayAlert(Language.Titlepopup, Language.Qpopup, Language.YesPopup, Language.Nopopup);
+        if (answer)
+        {
+            await _vm.Delete();
+        }
+    }
+
 }

@@ -4,7 +4,8 @@
              x:Class="MauiApp1.MainPage"
              xmlns:viewmodel="clr-namespace:MauiApp1.ViewModel"
              xmlns:model="clr-namespace:MauiApp1.Model"
-             x:DataType="viewmodel:MainViewModel">
+             x:DataType="viewmodel:MainViewModel"
+             xmlns:res="clr-namespace:MauiApp1.Resources">
 
     <Grid RowDefinitions="100, Auto, *"
           ColumnDefinitions=".75*, .25*"
@@ -15,11 +16,11 @@
         <Image Grid.ColumnSpan="2"
                Source="dotnet_bot.png"/>
 
-        <Entry Placeholder="Enter task"
+        <Entry Placeholder="{x:Static res:Language.PlaceHolderTask}"
                Text="{Binding Text}"
                Grid.Row="1"/>
 
-        <Button Text="Add"
+        <Button Text="{x:Static res:Language.AddButton}"
                 Command="{Binding AddCommand}"
                 Grid.Row="1"
                 Grid.Column="1"/>
@@ -31,7 +32,7 @@
                     <SwipeView >
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delete"
+                                <SwipeItem Text="{x:Static res:Language.DeleteButton}"
                                            BackgroundColor="red"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"
                                            CommandParameter="{Binding Id }"/>
@@ -51,9 +52,8 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Text="{Binding Name}"
-                                       TextColor="White"
-                                       FontSize="24"/>
-                                    <Button Text="Delete" 
+                                           FontSize="24"/>
+                                    <Button Text="{x:Static res:Language.DeleteButton}" 
                                             IsVisible="{OnPlatform Default=true, Android=false, iOS=false}"
                                         Grid.Column="1"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"

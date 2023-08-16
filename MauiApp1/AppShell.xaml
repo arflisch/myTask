@@ -4,10 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp1"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    xmlns:res="clr-namespace:MauiApp1.Resources">
 
     <ShellContent
-        Title="My Task"
+        Title="{x:Static res:Language.Title}"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
