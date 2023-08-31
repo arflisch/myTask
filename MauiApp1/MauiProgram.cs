@@ -1,8 +1,8 @@
-﻿using MauiApp1.ViewModel;
+﻿using MyTask.ViewModel;
 using Microsoft.Extensions.Logging;
 using Realms.Exceptions;
 
-namespace MauiApp1;
+namespace MyTask;
 
 public static class MauiProgram
 {

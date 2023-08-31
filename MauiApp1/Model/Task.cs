@@ -2,7 +2,7 @@
 
 using MongoDB.Bson;
 
-namespace MauiApp1.Model
+namespace MyTask.Model
 {
      public partial class TaskItem : IRealmObject
     {

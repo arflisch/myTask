@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MauiApp1.Model;
+using MyTask.Model;
 using MongoDB.Bson;
 using Realms;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace MauiApp1.ViewModel
+namespace MyTask.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {

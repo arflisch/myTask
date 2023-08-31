@@ -1,4 +1,4 @@
-﻿/*namespace MauiApp1.Data
+﻿/*namespace MyTask.Data
 {
     public static class Constants
     {

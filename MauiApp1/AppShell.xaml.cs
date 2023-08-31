@@ -1,4 +1,4 @@
-﻿namespace MauiApp1;
+﻿namespace MyTask;
 
 public partial class AppShell : Shell
 {

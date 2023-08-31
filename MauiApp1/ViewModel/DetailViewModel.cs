@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MauiApp1.Model;
+using MyTask.Model;
 using MongoDB.Bson;
 using System.Threading.Tasks;
 
-namespace MauiApp1.ViewModel
+namespace MyTask.ViewModel
 {
     [QueryProperty("Id", "Id")]
     public partial class DetailViewModel : ObservableObject

@@ -1,6 +1,6 @@
-﻿using MauiApp1.ViewModel;
+﻿using MyTask.ViewModel;
 
-namespace MauiApp1;
+namespace MyTask;
 
 public partial class MainPage : ContentPage
 {

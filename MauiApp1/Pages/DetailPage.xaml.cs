@@ -1,7 +1,7 @@
-using MauiApp1.ViewModel;
-using MauiApp1.Resources;
+using MyTask.ViewModel;
+using MyTask.Resources;
 
-namespace MauiApp1;
+namespace MyTask;
 
 public partial class DetailPage : ContentPage
 {
